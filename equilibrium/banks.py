@@ -7,7 +7,7 @@ class Bank(transaction.TransactionList):
   def __init__(self, filename):
     with open(filename) as fcsv:
       txns = list(csv.reader(fcsv, **self.csvOptions()))
-      self.transactions = sorted(map(self.hydrate, txns[1:]), key=lambda t: t.amount)
+      self.transactions = sorted(map(self.hydrate, txns[7:]), key=lambda t: t.amount)
 
   def csvOptions(self):
     return dict(delimiter=',')
@@ -29,7 +29,7 @@ class BankofAmerica(Bank):
   def hydrate(self, row):
     date = datetime.datetime.strptime(row[0], '%m/%d/%Y')
     if len(row[2]) > 0:
-      amt = 0 - numutil.parsefloat(row[2])
+      amt = numutil.parsefloat(row[2])
     else:
-      amt = numutil.parsefloat(row[3])
+      amt = 0 - numutil.parsefloat(row[3])
     return transaction.Transaction(date, amt, row[1])

@@ -4,11 +4,11 @@ from equilibrium import moneylover
 from equilibrium.banks import Citibank, BankofAmerica
 
 parser = argparse.ArgumentParser(description="Restore balance to MoneyLover")
-parser.add_argument('--money_lover', metavar='M')
-parser.add_argument('--bank', metavar='B')
-parser.add_argument('--transactions', metavar='T')
-parser.add_argument('--start', metavar='T')
-parser.add_argument('--end', metavar='T')
+parser.add_argument('-m', '--money_lover', metavar='M')
+parser.add_argument('-b', '--bank', metavar='B')
+parser.add_argument('-t', '--transactions', metavar='T')
+parser.add_argument('-s', '--start', metavar='S')
+parser.add_argument('-e', '--end', metavar='E')
 
 args = parser.parse_args()
 
